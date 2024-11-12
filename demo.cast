@@ -1,0 +1,12 @@
+{"version": 2, "width": 120, "height": 30, "timestamp": 1731414195, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.049021, "o", "\u001b[?2004h\u001b]0;diana_zh@DESKTOP-SDQ4U1P: ~/frontend-project-46\u0007\u001b[01;32mdiana_zh@DESKTOP-SDQ4U1P\u001b[00m:\u001b[01;34m~/frontend-project-46\u001b[00m$ "]
+[10.862906, "o", "gendiff file1.js"]
+[10.863298, "o", "on file2.json"]
+[11.601792, "o", "\r\n\u001b[?2004l\r"]
+[11.847244, "o", "{\r\n  - follow: false\r\n    host: hexlet.io\r\n  - proxy: 123.234.53.22\r\n  - timeout: 50\r\n  + timeout: 20\r\n  + verbose: true\r\n}\r\n"]
+[11.851654, "o", "\u001b[?2004h\u001b]0;diana_zh@DESKTOP-SDQ4U1P: ~/frontend-project-46\u0007\u001b[01;32mdiana_zh@DESKTOP-SDQ4U1P\u001b[00m:\u001b[01;34m~/frontend-project-46\u001b[00m$ "]
+[13.244938, "o", "e"]
+[13.537966, "o", "x"]
+[13.625869, "o", "i"]
+[13.917511, "o", "t"]
+[14.218323, "o", "\r\n\u001b[?2004l\rexit\r\n"]
