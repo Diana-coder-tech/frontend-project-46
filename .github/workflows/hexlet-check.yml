@@ -11,6 +11,8 @@ on:
       - '**'
     tags:
       - '**'
+env:
+  CI: true
 
 jobs:
   build:
@@ -22,3 +24,28 @@ jobs:
         uses: hexlet/project-action@release
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
+
+          - name: Set up Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: ${{ matrix.node-version }}
+             cache: 'npm'
+  
+      - name: Install dependencies
+        run: npm install
+  
+      - name: Run ESLint
+        run: make lint
+  
+      - name: Run tests
+        run: make test
+      # - name: Test & publish code coverage
+      #   # Publish code coverage on Code Climate
+      #   # https://github.com/paambaati/codeclimate-action
+      #   uses: paambaati/codeclimate-action@v5.0.0
+      #   # Add Code Climate secret key
+      #   env:
+      #     CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      #   with:
+      #     coverageCommand: make test-coverage
+      #     debug: true
