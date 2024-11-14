@@ -9,13 +9,15 @@
   },
   "dependencies": {
     "debug": "^4.3.5",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
   "scripts": {
+    "lint": "eslint .",
     "test": "jest"
   },
   "jest": {
-    "transform": {},   
+    "transform": {},
     "testEnvironment": "node"
   },
   "author": "Diana Zh",
