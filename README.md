@@ -25,6 +25,15 @@ https://asciinema.org/a/O8mrwQxlqo5mR9raIKNIB8o2S
 
 https://asciinema.org/a/WDSNOb1VsBwB6YDAP2qK3jka3
 
-Сравнение yml (форматер plain):
+Сравнение yml файлов (форматер plain):
 
 https://asciinema.org/a/mN0EzJjIYeJZ4ZZe3ggysDF7Y
+
+Сравнение json файлов (вывод в json):
+
+ https://asciinema.org/a/kyJHH87t33qsjOB1VQmzmJrfu
+
+Сравнение yml файлов (вывод в json):
+
+ https://asciinema.org/a/bIKr14QmWZKtfNh73NtsWnmyh
+ 
