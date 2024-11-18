@@ -23,34 +23,34 @@ gendiff [options] <filepath1> <filepath2>
 
 ## Примеры:
 
-### Сравнение json файлов (плоских):
+#### Сравнение json файлов (плоских):
 
 https://asciinema.org/a/pEre3KvQoALBuDZfTuQgPHxsL
 
-### Сравнение yml файлов (плоских):
+#### Сравнение yml файлов (плоских):
 
 https://asciinema.org/a/hJgOdgq5921igaFbwgcMB8m3R
 
-### Сравнение json файлов (рекурсивоно):
+#### Сравнение json файлов (рекурсивоно):
 
 https://asciinema.org/a/ypvXS8GmiIyZOmfAHK5GXSmkh
 
-### Сравнение yml файлов (плоских):
+#### Сравнение yml файлов (плоских):
 
 https://asciinema.org/a/O8mrwQxlqo5mR9raIKNIB8o2S
 
-### Сравнение json файлов (форматер plain):
+#### Сравнение json файлов (форматер plain):
 
 https://asciinema.org/a/WDSNOb1VsBwB6YDAP2qK3jka3
 
-### Сравнение yml файлов (форматер plain):
+#### Сравнение yml файлов (форматер plain):
 
 https://asciinema.org/a/mN0EzJjIYeJZ4ZZe3ggysDF7Y
 
-### Сравнение json файлов (вывод в json):
+#### Сравнение json файлов (вывод в json):
 
  https://asciinema.org/a/kyJHH87t33qsjOB1VQmzmJrfu
 
-### Сравнение yml файлов (вывод в json):
+#### Сравнение yml файлов (вывод в json):
 
  https://asciinema.org/a/bIKr14QmWZKtfNh73NtsWnmyh
