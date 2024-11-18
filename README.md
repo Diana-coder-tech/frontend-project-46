@@ -21,3 +21,10 @@ https://asciinema.org/a/ypvXS8GmiIyZOmfAHK5GXSmkh
 
 https://asciinema.org/a/O8mrwQxlqo5mR9raIKNIB8o2S
 
+Сравнение json файлов (форматер plain):
+
+https://asciinema.org/a/WDSNOb1VsBwB6YDAP2qK3jka3
+
+Сравнение yml (форматер plain):
+
+https://asciinema.org/a/mN0EzJjIYeJZ4ZZe3ggysDF7Y

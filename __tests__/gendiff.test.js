@@ -1,22 +1,23 @@
-import gendiff from '../src/index.js';
-import { readFileSync } from 'fs';
+import fs from 'fs';
 import path from 'path';
+import genDiff from '../src/index.js';
 
 const getFixturePath = (filename) => path.join(__dirname, '__fixtures__', filename);
-const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 
-test('gendiff JSON files', () => {
-  const file1 = getFixturePath('file1.json');
-  const file2 = getFixturePath('file2.json');
-  const expected = readFile('expectedStylishOutput.txt');
+const file1 = getFixturePath('file1.json');
+const file2 = getFixturePath('file2.json');
+const expectedStylish = fs.readFileSync(getFixturePath('expectedStylishOutput.txt'), 'utf-8');
+const expectedPlain = fs.readFileSync(getFixturePath('expectedPlainOutput.txt'), 'utf-8');
+const expectedJson = fs.readFileSync(getFixturePath('expectedJsonOutput.json'), 'utf-8');
 
-  expect(gendiff(file1, file2)).toBe(expected);
+test('gendiff stylish format', () => {
+  expect(genDiff(file1, file2, 'stylish')).toBe(expectedStylish);
 });
 
-test('gendiff YAML files', () => {
-  const file1 = getFixturePath('file1.yaml');
-  const file2 = getFixturePath('file2.yaml');
-  const expected = readFile('expectedStylishOutput.txt');
+test('gendiff plain format', () => {
+  expect(genDiff(file1, file2, 'plain')).toBe(expectedPlain);
+});
 
-  expect(gendiff(file1, file2)).toBe(expected);
+test('gendiff json format', () => {
+  expect(genDiff(file1, file2, 'json')).toBe(expectedJson);
 });
