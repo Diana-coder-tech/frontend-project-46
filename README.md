@@ -10,7 +10,9 @@
 ## Установка
 
 git clone git@github.com:Diana-coder-tech/frontend-project-46.git
+
 cd frontend-project-46
+
 make install
 
 ## Использование
