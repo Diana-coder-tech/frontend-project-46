@@ -1,34 +1,22 @@
-import { fileURLToPath } from 'url';
+import gendiff from '../src/index.js';
+import { readFileSync } from 'fs';
 import path from 'path';
-import genDiff from '../src/gendiff.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const getFixturePath = (filename) => path.join(__dirname, '__fixtures__', filename);
+const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 
-test('gendiff between two flat json files', () => {
-  const filepath1 = path.join(__dirname, '../__fixtures__/file1.json');
-  const filepath2 = path.join(__dirname, '../__fixtures__/file2.json');
-  const expectedOutput = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}`;
-  expect(genDiff(filepath1, filepath2)).toBe(expectedOutput);
+test('gendiff JSON files', () => {
+  const file1 = getFixturePath('file1.json');
+  const file2 = getFixturePath('file2.json');
+  const expected = readFile('expectedStylishOutput.txt');
+
+  expect(gendiff(file1, file2)).toBe(expected);
 });
 
-test('gendiff with yaml files', () => {
-  const filepath1 = path.join(__dirname, '__fixtures__', 'file1.yml');
-  const filepath2 = path.join(__dirname, '__fixtures__', 'file2.yml');
-  const expected = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}`;
-  expect(genDiff(filepath1, filepath2)).toEqual(expected);
+test('gendiff YAML files', () => {
+  const file1 = getFixturePath('file1.yaml');
+  const file2 = getFixturePath('file2.yaml');
+  const expected = readFile('expectedStylishOutput.txt');
+
+  expect(gendiff(file1, file2)).toBe(expected);
 });

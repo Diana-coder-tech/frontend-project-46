@@ -5,4 +5,7 @@ install: deps-install
 	npx simple-git-hooks
 
 test:
-	npm test
+	npx jest
+
+start:
+	node bin/gendiff.js

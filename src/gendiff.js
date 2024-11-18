@@ -1,32 +1,20 @@
-import _ from 'lodash';
-import parseFile from './parsers.js';
+import { readFileSync } from 'fs';
+import path from 'path';
+import parse from './parsers.js';
+import buildDiff from './buildDiff.js';
+import formatStylish from './formatters/stylish.js';
 
-const genDiff = (filepath1, filepath2) => {
-  const file1Data = parseFile(filepath1);
-  const file2Data = parseFile(filepath2);
+const gendiff = (filepath1, filepath2, format = 'stylish') => {
+  const data1 = parse(readFileSync(filepath1, 'utf-8'), path.extname(filepath1).slice(1));
+  const data2 = parse(readFileSync(filepath2, 'utf-8'), path.extname(filepath2).slice(1));
 
-  // Получаем все уникальные ключи из обоих объектов и сортируем их
-  const allKeys = _.sortBy(_.union(Object.keys(file1Data), Object.keys(file2Data)));
+  const diff = buildDiff(data1, data2);
 
-  const resultLines = allKeys.map((key) => {
-    if (_.has(file1Data, key) && _.has(file2Data, key)) {
-      // Ключ присутствует в обоих файлах
-      if (file1Data[key] === file2Data[key]) {
-        return `    ${key}: ${file1Data[key]}`;
-      } else {
-        return `  - ${key}: ${file1Data[key]}\n  + ${key}: ${file2Data[key]}`;
-      }
-    } else if (_.has(file1Data, key)) {
-      // Ключ есть только в первом файле
-      return `  - ${key}: ${file1Data[key]}`;
-    } else {
-      // Ключ есть только во втором файле
-      return `  + ${key}: ${file2Data[key]}`;
-    }
-  });
+  if (format === 'stylish') {
+    return formatStylish(diff);
+  }
 
-  // Оборачиваем результат в фигурные скобки и объединяем строки
-  return `{\n${resultLines.join('\n')}\n}`;
+  throw new Error(`Unknown format: ${format}`);
 };
 
-export default genDiff;
+export default gendiff;

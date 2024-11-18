@@ -5,10 +5,19 @@
 
 Проект "Вычислитель отличий"
 
-Сравнение json файлов:
+Сравнение json файлов (плоских):
 
 https://asciinema.org/a/pEre3KvQoALBuDZfTuQgPHxsL
 
-Сравнение yml файлов:
+Сравнение yml файлов (плоских):
 
 https://asciinema.org/a/hJgOdgq5921igaFbwgcMB8m3R
+
+Сравнение json файлов (рекурсивоно):
+
+https://asciinema.org/a/ypvXS8GmiIyZOmfAHK5GXSmkh
+
+Сравнение yml файлов (плоских):
+
+https://asciinema.org/a/O8mrwQxlqo5mR9raIKNIB8o2S
+
