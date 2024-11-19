@@ -17,9 +17,14 @@ make install
 
 ## Использование
 
-gendiff [options] <filepath1> <filepath2>
+node bin/gendiff -f stylish filepath1.json filepath2.json
 
-Программа умеет выводить различия в трех форматах, по умолчанию это формат stylish. Также это могут быть plain и json. 
+node bin/gendiff -f plain filepath1.json filepath2.json
+
+node bin/gendiff -f json filepath1.json filepath2.json
+
+
+Программа умеет выводить различия в трех форматах: stylish, plain и json. 
 
 ## Примеры:
 
