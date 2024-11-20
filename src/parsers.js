@@ -6,4 +6,12 @@ const parse = {
   yml: yaml.load,
 };
 
-export default ({ data, format }) => parse[format](data);
+export default ({ data, format }) => {
+  const getParse = parse[format];
+
+  if (!getParse) {
+    throw new Error(`Unsupported file format: ${format}`);
+  }
+
+  return getParse(data);
+};
