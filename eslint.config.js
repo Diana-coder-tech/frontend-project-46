@@ -1,45 +1,57 @@
 import globals from 'globals';
-import pluginJs from '@eslint/js';
-import path from 'path';
-import { FlatCompat } from '@eslint/eslintrc';
-import { fileURLToPath } from 'url';
 
-// Определение __filename и __dirname для ESM
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
+import pluginJs from '@eslint/js';
+import importPlugin from 'eslint-plugin-import';
+
+// mimic CommonJS variables -- not needed if using CommonJS
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Совместимость с CommonJS конфигурациями
 const compat = new FlatCompat({
-  baseDirectory: __dirname, // Указание базовой директории
+  baseDirectory: __dirname,
+  recommendedConfig: pluginJs.configs.recommended,
 });
 
-// Экспорт конфигурации
-/** @type {import('eslint').Linter.Config[]} */
 export default [
-  ...compat.config({
-    parserOptions: {
-      ecmaVersion: 'latest', // Современная версия ECMAScript
-      sourceType: 'module', // Использование ES-модулей
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.jest,
+      },
+      parserOptions: {
+        // Eslint doesn't supply ecmaVersion in `parser.js` `context.parserOptions`
+        // This is required to avoid ecmaVersion < 2015 error or 'import' / 'export' error
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
     },
-    env: {
-      node: true, // Среда выполнения Node.js
-      jest: true, // Поддержка глобальных переменных Jest
+    plugins: { import: importPlugin },
+    rules: {
+      ...importPlugin.configs.recommended.rules,
     },
-    globals: {
-      ...globals.node, // Глобальные переменные Node.js
-      ...globals.jest, // Глобальные переменные Jest
-    },
+  },
+  ...compat.extends('airbnb-base'),
+  {
     rules: {
       'no-underscore-dangle': [
         'error',
         {
-          allow: ['__filename', '__dirname'], // Разрешение использования __filename и __dirname
+          allow: ['__filename', '__dirname'],
         },
       ],
-      'import/no-named-as-default': 'off', // Отключение определённых импортных правил
+      'import/extensions': [
+        'error',
+        {
+          js: 'always',
+        },
+      ],
+      'import/no-named-as-default': 'off',
       'import/no-named-as-default-member': 'off',
       'no-console': 'off',
       'import/no-extraneous-dependencies': 'off',
     },
-  }),
+  },
 ];
